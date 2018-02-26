@@ -25,10 +25,19 @@ SpinAudioProcessor::SpinAudioProcessor()
                        )
 #endif
 {
+	oscillator_1_ = std::make_shared<maxiOsc>();
+	oscillator_2_ = std::make_shared<maxiOsc>();
+	oscillator_settings_ = std::make_shared<maxiSettings>();
+	//
+	oscillator_1_->phaseReset(0.0);
+	oscillator_2_->phaseReset(double_Pi / 2);
 }
 
 SpinAudioProcessor::~SpinAudioProcessor()
 {
+	oscillator_1_ = nullptr;
+	oscillator_2_ = nullptr;
+	oscillator_settings_ = nullptr;
 }
 
 //==============================================================================
@@ -99,7 +108,9 @@ void SpinAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     //
-    audioEngine.prepare ({ sampleRate, (uint32) samplesPerBlock, 2 });
+    //audioEngine.prepare ({ sampleRate, (uint32) samplesPerBlock, 2 });
+	oscillator_settings_->sampleRate = sampleRate;
+	oscillator_settings_->bufferSize = samplesPerBlock;
 }
 
 void SpinAudioProcessor::releaseResources()
@@ -156,7 +167,38 @@ void SpinAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& mi
         // ..do something to the data...
     }
      */
-    audioEngine.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
+    //audioEngine.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
+	//
+	// left channel
+	float *channel_1_read_ = buffer.getReadPointer(channel_1_);
+	float *channel_1_write_ = buffer.getReadPointer(channel_1_);
+	//
+	//right channel
+	if (totalNumInputChannels > 1)
+	{
+		float *channel_2_read_ = buffer.getReadPointer(channel_2_);
+		channel_2_input_ = true;
+	}
+	if (totalNumOutputChannels > 1)
+	{
+		float *channel_2_write_ = buffer.getReadPointer(channel_2_);
+		channel_2_output = true;
+	}
+	//
+	for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
+	{
+		float waveform_1_ = oscillator_1_->sinewave(frequency_);
+		float waveform_2_ = oscillator_2_->sinewave(frequency_);
+		channel_1_write_[sample] = channel_1_read_[sample] * waveform_1_;
+		if (channel_2_input_ && channel_2_output)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
 }
 
 //==============================================================================

@@ -12,7 +12,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "AudioEngine.h"
+//#include "AudioEngine.h"
+#include "../3rdPartyLibraries/maximilian.h"
 
 //==============================================================================
 /**
@@ -62,7 +63,17 @@ public:
 
 private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SpinAudioProcessor)
-    
-    AudioEngine audioEngine;
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SpinAudioProcessor)
+
+	//AudioEngine audioEngine;
+	std::shared_ptr<maxiOsc> oscillator_1_;
+	std::shared_ptr<maxiOsc> oscillator_2_;
+	std::shared_ptr<maxiSettings> oscillator_settings_;
+	double frequency = 0.0;
+	//
+	const int channel_1_ = 0;
+	const int channel_2_ = 1;
+	//
+	bool channel_2_input_ = false;
+	bool channel_2_output = false;
 };

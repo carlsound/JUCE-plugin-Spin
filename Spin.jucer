@@ -10,22 +10,27 @@
               pluginCode="Spin" pluginChannelConfigs="" pluginIsSynth="1" pluginWantsMidiIn="1"
               pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="1"
               pluginAUExportPrefix="SpinAU" pluginRTASCategory="" aaxIdentifier="net.carlsound.Spin"
-              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.2.0"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.2.1"
               companyName="carlsound" companyWebsite="carlsound.net">
   <MAINGROUP id="P6LOkW" name="Spin">
+    <GROUP id="{37559335-1738-F0A7-D206-97662072F616}" name="3rdPartyLibraries">
+      <FILE id="fzjtKQ" name="maximilian.cpp" compile="1" resource="0" file="3rdPartyLibraries/maximilian.cpp"/>
+      <FILE id="zUk7YD" name="maximilian.h" compile="0" resource="0" file="3rdPartyLibraries/maximilian.h"/>
+    </GROUP>
     <GROUP id="{C794E641-2409-0CFB-4C75-FC6AC79B4795}" name="Source">
-      <FILE id="y65RBD" name="SpeedSlider.cpp" compile="1" resource="0" file="Source/SpeedSlider.cpp"/>
-      <FILE id="MS02Zk" name="SpeedSlider.h" compile="0" resource="0" file="Source/SpeedSlider.h"/>
-      <FILE id="v93tKg" name="Oscillator.h" compile="0" resource="0" file="Source/Oscillator.h"/>
-      <FILE id="qWOUAk" name="Voice.h" compile="0" resource="0" file="Source/Voice.h"/>
-      <FILE id="Aiee9m" name="AudioEngine.h" compile="0" resource="0" file="Source/AudioEngine.h"/>
-      <FILE id="aMuTT1" name="PluginProcessor.cpp" compile="1" resource="0"
-            file="Source/PluginProcessor.cpp"/>
-      <FILE id="r73nGC" name="PluginProcessor.h" compile="0" resource="0"
-            file="Source/PluginProcessor.h"/>
-      <FILE id="QDq54c" name="PluginEditor.cpp" compile="1" resource="0"
-            file="Source/PluginEditor.cpp"/>
-      <FILE id="tWxTmb" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <GROUP id="{801678C4-C123-CEAA-4FA0-03277BEC85A9}" name="Backend">
+        <FILE id="aMuTT1" name="PluginProcessor.cpp" compile="1" resource="0"
+              file="Source/PluginProcessor.cpp"/>
+        <FILE id="r73nGC" name="PluginProcessor.h" compile="0" resource="0"
+              file="Source/PluginProcessor.h"/>
+      </GROUP>
+      <GROUP id="{8EBDCAE6-2894-7A4D-3D72-CE93A30DF23F}" name="GUI">
+        <FILE id="QDq54c" name="PluginEditor.cpp" compile="1" resource="0"
+              file="Source/PluginEditor.cpp"/>
+        <FILE id="tWxTmb" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+        <FILE id="MS02Zk" name="SpeedSlider.h" compile="0" resource="0" file="Source/SpeedSlider.h"/>
+        <FILE id="y65RBD" name="SpeedSlider.cpp" compile="1" resource="0" file="Source/SpeedSlider.cpp"/>
+      </GROUP>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

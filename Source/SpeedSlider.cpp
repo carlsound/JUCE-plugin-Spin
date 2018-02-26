@@ -7,12 +7,12 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 5.2.0
+  Created with Projucer version: 5.2.1
 
   ------------------------------------------------------------------------------
 
-  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright (c) 2015 - ROLI Ltd.
+  The Projucer is part of the JUCE library.
+  Copyright (c) 2017 - ROLI Ltd.
 
   ==============================================================================
 */
@@ -37,6 +37,8 @@ SpeedSlider::SpeedSlider ()
     speed->setSliderStyle (Slider::LinearHorizontal);
     speed->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     speed->addListener (this);
+
+    speed->setBounds (8, 8, 360, 24);
 
 
     //[UserPreSize]
@@ -78,7 +80,6 @@ void SpeedSlider::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    speed->setBounds (8, 8, 360, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -119,9 +120,10 @@ BEGIN_JUCER_METADATA
                  fixedSize="0" initialWidth="600" initialHeight="40">
   <BACKGROUND backgroundColour="ff323e44"/>
   <SLIDER name="new speed" id="c6f038ee9b0da697" memberName="speed" virtualName=""
-          explicitFocusOrder="0" pos="8 8 360 24" min="0" max="10" int="0"
-          style="LinearHorizontal" textBoxPos="TextBoxLeft" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1" needsCallback="1"/>
+          explicitFocusOrder="0" pos="8 8 360 24" min="0.00000000000000000000"
+          max="10.00000000000000000000" int="0.00000000000000000000" style="LinearHorizontal"
+          textBoxPos="TextBoxLeft" textBoxEditable="1" textBoxWidth="80"
+          textBoxHeight="20" skewFactor="1.00000000000000000000" needsCallback="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
